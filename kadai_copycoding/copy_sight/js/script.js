@@ -29,15 +29,6 @@ $(function () {
     }
   });
 
-  //ナビゲーション スムーズスクロール
-  // $('.navAbout').on('click', function() {
-  //   $('html, body').animate({scrollTop: $('#about').offset().top}, 500);
-  // });
-
-  // $('.navWorks').on('click', function() {
-  //   $('html, body').animate({scrollTop: $('#works').offset().top}, 500);
-  // });
-
   $('.navAbout, .navWorks').on('click', function() {
     let getClass = $(this).attr('class');
     let editClass = getClass.replace('hover', '').replace('nav', '').toLowerCase();
@@ -51,21 +42,9 @@ $(function () {
   });
 
   function addClassScroll(target) {
-    //スクロールの上下の位置を取得（画面上部から現在の scroll位置を取得）
-    //例えば、スクロールして 200px 下に移動したら winScroll = 200 になる。
     let winScroll = $(window).scrollTop();
-    //ウィンドウの高さを取得（表示しているウィンドウの高さを取得）
-    //例えば、ウィンドウの高さが 800px なら winHeight = 800
     let winHeight = $(window).height();
-    //上記の合計(スクロールポジション)（画面上部から現在の scroll位置とブラウザをの高さを足す）
-    // 下記は例
-    // winScroll = 200
-    // winHeight = 800
-    // scrollPosition = 200 + 800 = 1000
-    // 画面の最上部から 1000px の位置までが見えている
     let scrollPosition = winScroll + winHeight;
-    // target.offset().top は target 要素（.about や .works）のページの最上部からの位置
-    // 例えば、.about の位置が 800px なら、target.offset().top = 800
     if (target.offset().top < scrollPosition) {
       target.addClass('is-show');
     }
